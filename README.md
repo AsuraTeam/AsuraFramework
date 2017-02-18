@@ -1,10 +1,10 @@
 # asura
 
 > asura是我们在实际使用过程中，抽取出来的公共组件，主要包括如下：    
-  asura-base      对content增强处理，无法单独提供服务
-  asura-commons   封装第三方的工具包提供util类
-  asura-cache     缓存相关的功能封装    
-  asura-dao       数据库访问读写分离相关    
+  asura-base      对content增强处理，无法单独提供服务       
+  asura-commons   封装第三方的工具包提供util类      
+  asura-cache     缓存相关的功能封装       
+  asura-dao       数据库访问读写分离相关       
   asura-log       统一日志处理相关    
   asura-rabbitmq  rabbitmq相关    
   asura-quartz    定时任务相关    
