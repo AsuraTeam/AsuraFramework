@@ -9,47 +9,6 @@
   asura-rabbitmq  rabbitmq相关    
   asura-quartz    定时任务相关    
   
-
-
-## What's New
-
-### asura-0.0.9 
-1、新增asura-cache sentinel支持
-
-
-### asura-0.0.8
-1、新增asura-commons   
-2、规则base模块，提供基于jackson全新的json工具   
-3、去除掉http3依赖   
-
-### asura-0.0.6
-1、zk模块升级到curator
-2、基于curator的asura-conf
-4、asura-pay支付和通用收款单相关内容
-5、asura-base新增支持header的http请求    
-6、 asura-base支持DES加密   
-
-### asura-0.0.5    
-1、asura-rabbitmq 支持客户端消费者断开连接后重连    
-2、asura-rabbitmq 支持客户端消费者处理消费异常    
-3、asura-log统一接管返回值为DataTransferObject（或者为DataTransferObject的String形式）异常处理    
-
-### asura-0.0.4    
-新增asura-pay模块     
-
-### asura-0.0.3   
-新增asura-log接管所有异常错误功能   
-
-### asura-0.0.2   
-asura-log对接CAT   
-新增asura-rabbitmq   
-
-### asura-0.0.1    
-基础的组件功能    
-
-## 版本发布文档
-> 目前废弃掉使用package.bat文件deploy到远程仓库    
-
 ### 1、parent pom.xml文件
 > parant pom.xml 需要设置好    
   1、部署的仓库地址    
