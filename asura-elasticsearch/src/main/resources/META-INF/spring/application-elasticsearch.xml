@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.asura.framework.conf.subscribe.InitSubscriber" />
+
+    <bean id="eshClientFactory" class="com.asura.framework.elasticsearch.client.EshClientFactory"
+          init-method="init" />
+
+    <bean id="esQuery" class="com.asura.framework.elasticsearch.dao.EsQuery">
+        <property name="esClientFactory" ref="eshClientFactory"/>
+    </bean>
+
+    <bean id="esDoc" class="com.asura.framework.elasticsearch.dao.EsDoc">
+        <property name="esClientFactory" ref="eshClientFactory"/>
+    </bean>
+
+   <bean id="esIndex" class="com.asura.framework.elasticsearch.dao.EsIndex">
+        <property name="esClientFactory" ref="eshClientFactory"/>
+    </bean>
+</beans>

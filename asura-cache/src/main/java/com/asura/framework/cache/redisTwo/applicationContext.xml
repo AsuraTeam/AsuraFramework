@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="testOnBorrow" value="true" />
+	</bean>
+
+	<bean id="connectionFactory"
+		class="com.asura.framework.cache.factory.JedisConnectionPoolFactory">
+		<property name="poolConfig" ref="jedisPoolConfig" />
+		<property name="shards">
+			<list>
+				<bean class="redis.clients.jedis.JedisShardInfo">
+					<constructor-arg value="192.168.17.71" />
+					<constructor-arg value="6379" />
+				</bean>
+				<!--<bean class="redis.clients.jedis.JedisShardInfo">
+					<property name="host" value="192.168.17.71"/>
+					<property name="port" value="6379"/>
+				</bean>-->
+			</list>
+		</property>
+	</bean>
+
+	<bean id="UserCacheServiceBean" class="com.asura.framework.cache.NCacheServiceProvider">
+		<!--<property name="prefix" value="user" />-->
+		<property name="jedis" ref="connectionFactory" />
+	</bean>
+</beans>

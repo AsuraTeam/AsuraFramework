@@ -1,0 +1,152 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.asura</groupId>
+        <artifactId>asura</artifactId>
+        <version>0.0.9-SNAPSHOT</version>
+    </parent>
+    <artifactId>asura-rabbitmq</artifactId>
+
+
+    <dependencies>
+        <!-- rabbitmq start -->
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+        </dependency>
+        <!-- rabbitmq end -->
+
+        <!-- spring start -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+        <!-- spring end -->
+        <!-- log start -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <!-- log end -->
+        <dependency>
+            <groupId>com.asura</groupId>
+            <artifactId>com-asura-framework-commons</artifactId>
+        </dependency>
+        <!-- cat start -->
+        <dependency>
+            <groupId>com.dianping.cat</groupId>
+            <artifactId>cat-client</artifactId>
+        </dependency>
+        <!-- cat end -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>default-jar</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                            <phase>package</phase>
+                            <configuration>
+                                <archive>
+                                    <addMavenDescriptor>false</addMavenDescriptor>
+                                    <manifest>
+                                        <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                                        <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                                    </manifest>
+                                </archive>
+                                <finalName>com-asura-framework-rabbitmq-${project.version}</finalName>
+                                <includes>
+                                    <include>**/**/*.class</include>
+                                </includes>
+                                <excludes>
+                                    <include>**/logback/**/*.class</include>
+                                    <include>**/**/*.properties</include>
+                                </excludes>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>install-file</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>install-file</goal>
+                            </goals>
+                            <configuration>
+                                <file>target/com-asura-framework-rabbitmq-${project.version}.jar</file>
+                                <repositoryLayout>default</repositoryLayout>
+                                <groupId>com.asura</groupId>
+                                <artifactId>com-asura-framework-rabbitmq</artifactId>
+                                <version>${project.version}</version>
+                                <packaging>jar</packaging>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>default-deploy</id>
+                            <phase>none</phase>
+                        </execution>
+                        <execution>
+                            <id>deploy-rabbitmq</id>
+                            <phase>deploy</phase>
+                            <goals>
+                                <goal>deploy-file</goal>
+                            </goals>
+                            <configuration>
+                                <file>target/com-asura-framework-rabbitmq-${project.version}.jar</file>
+                                <repositoryId>${repository.id}</repositoryId>
+                                <url>${repository.url}</url>
+                                <groupId>com.asura</groupId>
+                                <artifactId>com-asura-framework-rabbitmq</artifactId>
+                                <version>${project.version}</version>
+                                <pomFile>pom-deploy.xml</pomFile>
+                                <packaging>jar</packaging>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

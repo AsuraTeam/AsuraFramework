@@ -1,0 +1,43 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.asura</groupId>
+        <artifactId>asura</artifactId>
+        <version>0.0.9-SNAPSHOT</version>
+    </parent>
+    <artifactId>com-asura-framework-rabbitmq</artifactId>
+
+
+    <dependencies>
+        <!-- rabbitmq start -->
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+        </dependency>
+        <!-- rabbitmq end -->
+        <dependency>
+            <groupId>com.asura</groupId>
+            <artifactId>com-asura-framework-commons</artifactId>
+        </dependency>
+        <!-- spring start -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <!-- spring end -->
+
+        <!-- log start -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <!-- log end -->
+        <!-- cat start -->
+        <dependency>
+            <groupId>com.dianping.cat</groupId>
+            <artifactId>cat-client</artifactId>
+        </dependency>
+        <!-- cat end -->
+    </dependencies>
+</project>

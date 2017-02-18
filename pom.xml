@@ -1,0 +1,992 @@
+<!--
+  ~ Copyright (c) 2017. Asura.
+  -->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.asura</groupId>
+	<artifactId>asura</artifactId>
+	<version>0.0.9-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>asura</name>
+	<description>asura</description>
+	<modules>
+		<module>asura-base</module>
+		<module>asura-log</module>
+		<module>asura-cache</module>
+		<module>asura-conf</module>
+		<module>asura-dao</module>
+		<module>asura-elasticsearch</module>
+		<module>asura-dubbo</module>
+		<module>asura-monitor</module>
+		<module>asura-quartz</module>
+		<module>asura-sms</module>
+		<module>asura-rabbitmq</module>
+		<module>asura-commons</module>
+    </modules>
+
+	<!-- <distributionManagement> <repository> <id>asura-release</id> <name>Asura-Release</name> 
+		<url>http://192.168.16.200:8081/nexus/content/repositories/asura-release/</url> 
+		<layout>default</layout> </repository> <snapshotRepository> <id>asura-snapshot</id> 
+		<name>Asura-Snapshot</name> <url>http://192.168.16.200:8081/nexus/content/repositories/asura-snapshot/</url> 
+		<layout>default</layout> </snapshotRepository> </distributionManagement> -->
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<junit.version>4.11</junit.version>
+		<spring-consumer-version>2.5.6.SEC03</spring-consumer-version>
+		<springframework-version>3.2.9.RELEASE</springframework-version>
+		<servlet.version>2.5</servlet.version>
+		<mybatis.version>3.2.7</mybatis.version>
+		<jackson.version>1.9.10</jackson.version>
+		<asura.version>0.0.9-SNAPSHOT</asura.version>
+		<!--<jackson_version>2.5.4</jackson_version>-->
+		<jackson_hversion>2.8.2</jackson_hversion>
+		<fastjson.version>1.1.28</fastjson.version>
+		<jsp-api.version>2.1</jsp-api.version>
+		<jstl-api.version>1.2</jstl-api.version>
+		<dubbo.version>2.8.4</dubbo.version>
+		<validation-api.version>1.0.0.GA</validation-api.version>
+		<slf4j.version>1.7.5mvn</slf4j.version>
+		<mysql-connector-java.version>5.1.33</mysql-connector-java.version>
+		<commons-lang.version>2.6</commons-lang.version>
+		<commons-pool.version>1.5.5</commons-pool.version>
+		<commons-logging.version>1.1.1</commons-logging.version>
+		<commons-dbcp.version>1.4</commons-dbcp.version>
+		<commons-collections.version>3.2.1</commons-collections.version>
+		<commons-codec.version>1.9</commons-codec.version>
+		<commons-beanutils.version>1.8.3</commons-beanutils.version>
+		<ezmorph.version>1.0.6</ezmorph.version>
+		<javassist.version>3.15.0-GA</javassist.version>
+		<jetty.version>6.1.26</jetty.version>
+		<jetty-util.version>6.1.26</jetty-util.version>
+		<mina-core.version>1.1.7</mina-core.version>
+		<netty.version>3.2.5.Final</netty.version>
+		<transactions.version>3.7.0</transactions.version>
+		<transactions-api.version>3.7.0</transactions-api.version>
+		<transactions-jdbc.version>1.0</transactions-jdbc.version>
+		<transactions-jta.version>1.0</transactions-jta.version>
+		<atomikos-util.version>3.7.0</atomikos-util.version>
+		<xstream.version>1.4.1</xstream.version>
+		<hessian.version>4.0.7</hessian.version>
+		<zookeeper.version>3.4.6</zookeeper.version>
+        <zkclient.version>0.1</zkclient.version>
+		<curator.version>2.5.0</curator.version>
+        <arhaius.version>0.6.2</arhaius.version>
+		<httpcomponents-client.version>4.1.2</httpcomponents-client.version>
+		<httpcomponents-core.version>4.1.2</httpcomponents-core.version>
+		<jta.version>1.1</jta.version>
+		<cxf.version>2.7.12</cxf.version>
+		<ibaits-version>2.3.0</ibaits-version>
+		<aspectj.version>1.7.4</aspectj.version>
+		<jcl.slf4j.version>1.6.6</jcl.slf4j.version>
+		<slf4j.version>1.7.6</slf4j.version>
+		<logback.version>1.1.2</logback.version>
+		<javamail.version>1.5.2</javamail.version>
+		<activation.version>1.1.1</activation.version>
+		<jms.version>3.1.2</jms.version>
+		<jmx-version>1.0</jmx-version>
+		<httpclient.version>3.1</httpclient.version>
+		<commons.pool2.version>2.0</commons.pool2.version>
+		<jedis.version>2.9.0</jedis.version>
+		<velocity.version>1.7</velocity.version>
+		<common.lang3.version>3.0.1</common.lang3.version>
+		<!--<asura.service.version>0.0.1</asura.service.version>-->
+		<hibernate.version>3.3.1.GA</hibernate.version>
+        <hibernate_validator_version>4.2.0.Final</hibernate_validator_version>
+		<mybatis.spring.version>1.2.2</mybatis.spring.version>
+		<mybatis.version>3.2.7</mybatis.version>
+		<!-- cat start -->
+		<cat-core.version>1.3.7-RELEASE</cat-core.version>
+		<gson.version>2.6.2</gson.version>
+		<findbugs.version>3.0.1</findbugs.version>
+		<guava.version>18.0</guava.version>
+		<netty4.version>4.0.24.Final</netty4.version>
+		<plexus-classworlds.version>2.5.1</plexus-classworlds.version>
+		<plexus-container-default.version>1.6</plexus-container-default.version>
+		<plexus-utils.version>3.0.8</plexus-utils.version>
+		<xbean-reflect.version>3.7</xbean-reflect.version>
+		<foundation-service.version>2.3.0</foundation-service.version>
+		<!-- cat end -->
+
+		<!-- rabbitmq start -->
+		<rabbitmq.version>3.6.0</rabbitmq.version>
+		<spring.rabbit.version>1.4.1.RELEASE</spring.rabbit.version>
+		<spring-amqp.version>1.4.1.RELEASE</spring-amqp.version>
+		<hessian.version>4.0.7</hessian.version>
+
+        <!-- elasticsearch start -->
+        <elasticsearch.version>2.3.5</elasticsearch.version>
+        <!-- elasticsearch end -->
+		<joda.time.version>2.9.4</joda.time.version>
+        <!-- elasticsearch client start -->
+        <jest.version>2.0.3</jest.version>
+        <!-- elasticsearch client end -->
+		<spring-data-redis-version>1.4.0.RELEASE</spring-data-redis-version>
+		<!-- rabbitmq end -->
+		<spatial.version>0.4.1</spatial.version>
+		<vividsolutions.version>1.13</vividsolutions.version>
+
+	</properties>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>${joda.time.version}</version>
+			</dependency>
+			<!-- rabbitmq start -->
+			<dependency>
+				<groupId>com.rabbitmq</groupId>
+				<artifactId>amqp-client</artifactId>
+				<version>${rabbitmq.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.amqp</groupId>
+				<artifactId>spring-amqp</artifactId>
+				<version>${spring-amqp.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.amqp</groupId>
+				<artifactId>spring-rabbit</artifactId>
+				<version>${spring.rabbit.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.caucho</groupId>
+				<artifactId>hessian</artifactId>
+				<version>${hessian.version}</version>
+			</dependency>
+			<!-- rabbitmq end -->
+			
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>${mybatis.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>${mybatis.spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.asura</groupId>
+				<artifactId>com-asura-framework-quartz-all</artifactId>
+				<version>${asura.version}</version>
+			</dependency>
+			<!-- 定时任务使用jar start -->
+			<dependency>
+				<groupId>javax.ejb</groupId>
+				<artifactId>javax.ejb-api</artifactId>
+				<version>3.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.geronimo.specs</groupId>
+				<artifactId>geronimo-jms_1.1_spec</artifactId>
+				<version>1.1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.mail</groupId>
+				<artifactId>javax.mail</artifactId>
+				<version>${javamail.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.activation</groupId>
+				<artifactId>activation</artifactId>
+				<version>${activation.version}</version>
+			</dependency>
+			<!-- 定时任务使用jar end -->
+			<!-- asura系列 -->
+			<dependency>
+				<groupId>com.asura</groupId>
+                <artifactId>com-asura-framework-commons</artifactId>
+                <version>${asura.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.asura</groupId>
+				<artifactId>com-asura-framework-base</artifactId>
+				<version>${asura.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.asura</groupId>
+				<artifactId>com-asura-framework-dao</artifactId>
+				<version>${asura.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.asura</groupId>
+				<artifactId>com-asura-framework-dubbo-scheduler</artifactId>
+				<version>${asura.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.asura</groupId>
+				<artifactId>com-asura-framework-monitor-center</artifactId>
+				<version>${asura.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.asura</groupId>
+				<artifactId>com-asura-framework-monitor-client</artifactId>
+				<version>${asura.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.asura</groupId>
+				<artifactId>com-asura-framework-publish</artifactId>
+				<version>${asura.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.asura</groupId>
+				<artifactId>com-asura-framework-subscribe</artifactId>
+				<version>${asura.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.asura</groupId>
+				<artifactId>com-asura-framework-web</artifactId>
+				<version>${asura.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.asura</groupId>
+				<artifactId>com-asura-framework-logback</artifactId>
+				<version>${asura.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.asura</groupId>
+				<artifactId>com-asura-framework-cache</artifactId>
+				<version>${asura.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.transaction</groupId>
+				<artifactId>jta</artifactId>
+				<version>${jta.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring</artifactId>
+				<version>${spring-consumer-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aspects</artifactId>
+				<version>${springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-instrument</artifactId>
+				<version>${springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jms</artifactId>
+				<version>${springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-oxm</artifactId>
+				<version>${springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-expression</artifactId>
+				<version>${springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${springframework-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.ibatis</groupId>
+				<artifactId>ibatis-sqlmap</artifactId>
+				<version>${ibaits-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>${servlet.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>${jsp-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet.jsp.jstl</groupId>
+				<artifactId>jstl-api</artifactId>
+				<version>${jstl-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish.web</groupId>
+				<artifactId>jstl-impl</artifactId>
+				<version>${jstl-api.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-mapper-asl</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-core-asl</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-core-lgpl</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-mapper-lgpl</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>${dubbo.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>log4j</groupId>
+						<artifactId>log4j</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>javax.servlet</groupId>
+						<artifactId>javax.servlet-api</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-web</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+            <dependency>
+                <groupId>com.github.sgroschupf</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkclient.version}</version>
+            </dependency>
+
+			<dependency>
+				<groupId>org.apache.curator</groupId>
+				<artifactId>curator-client</artifactId>
+				<version>${curator.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.curator</groupId>
+				<artifactId>curator-framework</artifactId>
+				<version>${curator.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.curator</groupId>
+				<artifactId>curator-recipes</artifactId>
+				<version>${curator.version}</version>
+			</dependency>
+
+            <dependency>
+                <groupId>com.netflix.archaius</groupId>
+                <artifactId>archaius-core</artifactId>
+                <version>${arhaius.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>log4j</groupId>
+						<artifactId>log4j</artifactId>
+					</exclusion>
+				</exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.netflix.archaius</groupId>
+                <artifactId>archaius-zookeeper</artifactId>
+                <version>${arhaius.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.apache.zookeeper</groupId>
+						<artifactId>zookeeper</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>log4j</groupId>
+						<artifactId>log4j</artifactId>
+					</exclusion>
+				</exclusions>
+            </dependency>
+
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql-connector-java.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.ibatis</groupId>
+				<artifactId>com.springsource.com.ibatis</artifactId>
+				<version>2.3.4.726</version>
+			</dependency>
+			<dependency>
+				<groupId>com.springsource</groupId>
+				<artifactId>com.springsource.net.sf.cglib</artifactId>
+				<version>2.2.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.springsource</groupId>
+				<artifactId>com.springsource.org.aopalliance</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>${validation-api.version}</version>
+			</dependency>
+			<dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate_validator_version}</version>
+            </dependency>
+            <dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.6</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-pool</groupId>
+				<artifactId>commons-pool</artifactId>
+				<version>1.5.5</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>1.1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-dbcp</groupId>
+				<artifactId>commons-dbcp</artifactId>
+				<version>1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>1.8.3</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>1.10</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>3.2.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.sf.ezmorph</groupId>
+				<artifactId>ezmorph</artifactId>
+				<version>${ezmorph.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>${javassist.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty</artifactId>
+				<version>${jetty.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-util</artifactId>
+				<version>${jetty-util.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.mina</groupId>
+				<artifactId>mina-core</artifactId>
+				<version>${mina-core.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jboss.netty</groupId>
+				<artifactId>netty</artifactId>
+				<version>${netty.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.atomikos</groupId>
+				<artifactId>transactions</artifactId>
+				<version>${transactions.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.atomikos</groupId>
+				<artifactId>transactions-api</artifactId>
+				<version>${transactions-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.atomikos</groupId>
+				<artifactId>atomikos-util</artifactId>
+				<version>${atomikos-util.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.thoughtworks.xstream</groupId>
+				<artifactId>xstream</artifactId>
+				<version>${xstream.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.jmx</groupId>
+				<artifactId>jmx</artifactId>
+				<version>${jmx-version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.jmx</groupId>
+				<artifactId>jmxremote</artifactId>
+				<version>${jmx-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jmx</groupId>
+				<artifactId>jmxremote_optional</artifactId>
+				<version>${jmx-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.zookeeper</groupId>
+				<artifactId>zookeeper</artifactId>
+				<version>${zookeeper.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>4.4.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.thrift</groupId>
+				<artifactId>libthrift</artifactId>
+				<version>0.9.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.ws.commons.axiom</groupId>
+				<artifactId>axiom-api</artifactId>
+				<version>1.2.13</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.ws.commons.axiom</groupId>
+				<artifactId>axiom-dom</artifactId>
+				<version>1.2.13</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.ws.commons.axiom</groupId>
+				<artifactId>axiom-common-impl</artifactId>
+				<version>1.2.13</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.ws.commons.axiom</groupId>
+				<artifactId>axiom-impl</artifactId>
+				<version>1.2.13</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.axis2</groupId>
+				<artifactId>axis2-adb</artifactId>
+				<version>1.6.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.axis2</groupId>
+				<artifactId>axis2-kernel</artifactId>
+				<version>1.6.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.axis2</groupId>
+				<artifactId>axis2-transport-http</artifactId>
+				<version>1.6.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.axis2</groupId>
+				<artifactId>axis2-transport-local</artifactId>
+				<version>1.6.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-frontend-jaxws</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-transports-http</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<!-- Jetty is needed if you're are not using the CXFServlet -->
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-transports-http-jetty</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.woodstox</groupId>
+				<artifactId>woodstox-core-asl</artifactId>
+				<version>4.4.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+				<version>${aspectj.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>${aspectj.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${jcl.slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>log4j-over-slf4j</artifactId>
+				<version>1.7.1</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-pool2</artifactId>
+				<version>${commons.pool2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>redis.clients</groupId>
+				<artifactId>jedis</artifactId>
+				<version>${jedis.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity</artifactId>
+				<version>${velocity.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${common.lang3.version}</version>
+			</dependency>
+			<!--	<dependency>
+                    <groupId>com.asura.base.service</groupId>
+                    <artifactId>com.asura-base-message-consumer</artifactId>
+                    <version>${asura.service.version}</version>
+                </dependency>-->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+
+			<!-- cat start -->
+			<dependency>
+				<groupId>com.dianping.cat</groupId>
+				<artifactId>cat-client</artifactId>
+				<version>${cat-core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.unidal.framework</groupId>
+				<artifactId>foundation-service</artifactId>
+				<version>${foundation-service.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>${gson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/com.google.code.findbugs/jsr305 -->
+			<dependency>
+				<groupId>com.google.code.findbugs</groupId>
+				<artifactId>jsr305</artifactId>
+				<version>${findbugs.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-all</artifactId>
+				<version>${netty4.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.plexus</groupId>
+				<artifactId>plexus-classworlds</artifactId>
+				<version>${plexus-classworlds.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.plexus</groupId>
+				<artifactId>plexus-container-default</artifactId>
+				<version>${plexus-container-default.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>com.google.collections</groupId>
+						<artifactId>google-collections</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.plexus</groupId>
+				<artifactId>plexus-utils</artifactId>
+				<version>${plexus-utils.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.xbean</groupId>
+				<artifactId>xbean-reflect</artifactId>
+				<version>${xbean-reflect.version}</version>
+			</dependency>
+			<!-- cat end -->
+
+            <!-- elasticsearch start -->
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+            <!-- elasticsearch end -->
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson_hversion}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.dataformat</groupId>
+				<artifactId>jackson-dataformat-smile</artifactId>
+				<version>${jackson_hversion}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.dataformat</groupId>
+				<artifactId>jackson-dataformat-yaml</artifactId>
+				<version>${jackson_hversion}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.dataformat</groupId>
+				<artifactId>jackson-dataformat-cbor</artifactId>
+				<version>${jackson_hversion}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson_hversion}</version>
+			</dependency>
+			<!--geoshape  start-->
+			<dependency>
+				<groupId>com.spatial4j</groupId>
+				<artifactId>spatial4j</artifactId>
+				<version>${spatial.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.vividsolutions</groupId>
+				<artifactId>jts</artifactId>
+				<version>${vividsolutions.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>xerces</groupId>
+						<artifactId>xercesImpl</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<!--geoshape  end-->
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-redis</artifactId>
+				<version>${spring-data-redis-version}</version>
+			</dependency>
+		</dependencies>
+
+	</dependencyManagement>
+
+
+
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- compiler插件, 设定JDK版本 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.5.1</version>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+
+				<!-- test插件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.19.1</version>
+					<configuration>
+						<!--<skip>true</skip> -->
+						<skip>true</skip>
+						<failIfNoTests>false</failIfNoTests>
+						<includes>
+							<include>**/*Test.java</include>
+						</includes>
+					</configuration>
+				</plugin>
+
+				<!-- resource插件, 设定编码 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.0.1</version>
+					<configuration>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+
+				<!-- clean插件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+				</plugin>
+
+				<!-- install插件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.5.2</version>
+				</plugin>
+
+				<!-- deploy插件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.8.2</version>
+				</plugin>
+
+
+				<!-- war插件 -->
+				<!--<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<configuration>
+						<warName>${project.artifactId}</warName>
+					</configuration>
+				</plugin>-->
+
+				<!-- jar插件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.5</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+								<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+				</plugin>
+
+				<!-- dependency插件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+				</plugin>
+
+				<!--release 插件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.1</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+
+</project>

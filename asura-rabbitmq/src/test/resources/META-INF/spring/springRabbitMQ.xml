@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+
+
+            http://www.springframework.org/schema/rabbit
+                http://www.springframework.org/schema/rabbit/spring-rabbit-1.0.xsd">
+
+
+    <!-- 连接服务配置  -->
+    <rabbit:connection-factory id="connectionFactory" host="10.16.9.12" username="sms_rabbit_write"
+                               password="sms_rabbit_write"/>
+
+    <rabbit:admin connection-factory="connectionFactory"/>
+
+    <!-- queue 队列声明-->
+    <rabbit:queue id="queue_one" durable="true" auto-delete="false" exclusive="false" name="queue_one"/>
+
+
+    <!-- exchange queue binging key 绑定 -->
+    <rabbit:direct-exchange name="my-mq-exchange" durable="true" auto-delete="false" id="my-mq-exchange">
+        <rabbit:bindings>
+            <rabbit:binding queue="queue_one" key="queue_one_key"/>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
+    <!-- spring amqp默认的是jackson 的一个插件,目的将生产者生产的数据转换为json存入消息队列，由于fastjson的速度快于jackson,这里替换为fastjson的一个实现 
+    <bean id="jsonMessageConverter"  class="mq.convert.FastJsonMessageConverter"></bean>
+    spring template声明
+    <rabbit:template exchange="my-mq-exchange" id="amqpTemplate"  connection-factory="connectionFactory"  message-converter="jsonMessageConverter"/>
+    -->
+    <rabbit:template exchange="my-mq-exchange" id="amqpTemplate" connection-factory="connectionFactory"
+                     queue="queue_one"/>
+    <!-- queue litener  观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象-->
+    <bean id="queueOneLitener" name="queueOneLitener" class="com.asure.framework.rabbitmq.QueueOneLitener"></bean>
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="auto">
+        <rabbit:listener queues="queue_one" ref="queueOneLitener"/>
+    </rabbit:listener-container>
+</beans>

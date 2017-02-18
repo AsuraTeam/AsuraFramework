@@ -1,0 +1,11 @@
+#连接
+sms.url=
+
+#用户名 
+sms.username=
+
+#密码
+sms.password=
+
+#是否发送 1发送  0不发送
+sms.isSend=

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:redis.properties"/>
+
+    <context:component-scan base-package="com.asura"/>
+
+
+    <bean id="redisSentinelCache" class="com.asura.framework.cache.redisOne.RedisSentinelCacheClient">
+        <property name="app" value="test_cache"/>
+        <property name="connectTimeout" value="2000"/>
+        <property name="maxIdle" value="10"/>
+        <property name="minIdle" value="5"/>
+        <property name="servers" value="10.16.34.16:6382|10.16.34.15:6382|10.16.34.125:6406"/>
+        <property name="masterName" value="sentinel-10.16.34.15-6381"/>
+        <property name="maxTotal" value="1000"/>
+        <property name="maxWaitMillis" value="1000"/>
+        <property name="socketTimeout" value="2000"/>
+    </bean>
+
+</beans>
