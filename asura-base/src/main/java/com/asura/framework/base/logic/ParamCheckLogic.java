@@ -23,7 +23,9 @@ import java.util.Set;
 
 /**
  * <p>
- *
+ *    结合JSR303 Bean Validator规范实现，对bean进行validator
+ *    支持 1、json 反序列化对象后校验
+ *        2、对象validator校验
  * </p>
  * <p/>
  * <PRE>
