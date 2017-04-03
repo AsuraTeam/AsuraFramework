@@ -9,6 +9,7 @@
 package com.asura.framework.base.logic;
 
 import com.asura.framework.base.exception.ValidatorException;
+import com.asura.framework.base.util.BusinessAssert;
 import com.asura.framework.base.util.MessageSourceUtil;
 import com.asura.framework.commons.json.Json;
 import com.asura.framework.commons.util.Check;
@@ -50,23 +51,6 @@ public class ParamCheckLogic {
     }
 
     /**
-     * @param param
-     * @return
-     */
-    public <T> T requireNonNull(T param) {
-        if (Check.isNull(param)) {
-            throw new ValidatorException(MessageSourceUtil.getChinese(messageSource, "param.null"));
-        }
-        if (param instanceof String) {
-            String paramStr = (String) param;
-            if (Check.isNullOrEmpty(paramStr)) {
-                throw new ValidatorException(MessageSourceUtil.getChinese(messageSource, "param.null"));
-            }
-        }
-        return param;
-    }
-
-    /**
      * 校验参数，并依据validator校验
      *
      * @param jsonStr
@@ -74,7 +58,7 @@ public class ParamCheckLogic {
      * @return
      */
     public <T> T checkParamValidate(String jsonStr, Class<T> clazz) {
-        return checkParamValidate(jsonStr, clazz);
+        return checkParamValidate(jsonStr, clazz, null);
     }
 
     /**
@@ -87,7 +71,7 @@ public class ParamCheckLogic {
      * @return
      */
     public <T> T checkParamValidate(@NotNull String jsonStr, Class<T> clazz, Class<?>... groups) {
-        requireNonNull(jsonStr);
+        BusinessAssert.requireNonEmpty(jsonStr, MessageSourceUtil.getChinese(messageSource, "param.null"));
         T t = Json.parseObject(jsonStr, clazz);
         //valiator校验
         checkObjParamValidate(t, groups);
@@ -117,7 +101,7 @@ public class ParamCheckLogic {
      * @return
      */
     public <T> T checkObjParamValidate(@NotNull T t, Class<?>... groups) {
-        requireNonNull(t);
+        BusinessAssert.requireNonEmpty(t, MessageSourceUtil.getChinese(messageSource, "param.null"));
         //是否符合validator校验
         StringBuilder errorMsg = new StringBuilder();
         Set<ConstraintViolation<T>> constraintViolationSet = null;
