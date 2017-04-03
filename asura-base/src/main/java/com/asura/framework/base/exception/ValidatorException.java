@@ -30,7 +30,7 @@ public class ValidatorException extends BusinessException {
     /**
      * 默认code为 10000002
      */
-    private static int VALIDATOR_CODE = 10000002;
+    public static int VALIDATOR_CODE = 10000002;
 
     /**
      * 构造器
