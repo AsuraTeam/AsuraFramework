@@ -155,7 +155,7 @@ public class ConfigSubscriber implements ApplicationConfiguration {
      */
     @Override
     public void registConfig(final String type, final String code, final Object defaultValue) throws Exception {
-        registConfig(null, type, code);
+        registConfig(null, type, code,defaultValue);
     }
 
     /**
