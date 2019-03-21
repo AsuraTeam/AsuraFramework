@@ -18,7 +18,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.asura</groupId>
-			<artifactId>com-asuraquartz-framework-quartz-all</artifactId>
+			<artifactId>com-asura-framework-quartz-all</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
